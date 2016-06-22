@@ -168,7 +168,7 @@ $('#trimming-color').on('click', function() {
 
 $('#trimming-color').on('shown.bs.popover', function() {
   $('.color-option a').each(function(index, ele) {
-    if ($(this).data('alias') == selection.coverColor) {
+    if ($(this).data('alias') == selection.trimmingColor) {
       $(this).addClass('active')
       $(this).html('<i class="fa fa-check" aria-hidden="true"></i>')
     }
@@ -229,7 +229,7 @@ $('#body-color').on('click', function() {
 
 $('#body-color').on('shown.bs.popover', function() {
   $('.color-option a').each(function(index, ele) {
-    if ($(this).data('alias') == selection.coverColor) {
+    if ($(this).data('alias') == selection.bodyColor) {
       $(this).addClass('active')
       $(this).html('<i class="fa fa-check" aria-hidden="true"></i>')
     }
