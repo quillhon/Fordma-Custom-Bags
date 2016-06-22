@@ -296,22 +296,35 @@ textarea {
   list-style: none;
 }
 
+.popover-content {
+  padding: 9px 7px 2px 14px;
+}
+
 .color-select {
   padding: 0;
   list-style: none;
-  height: 26px;
+  width: 108px;
 }
 
 .color-option {
-  float: left;
+  display: inline-block;
 }
 
 .color-option a {
   cursor: pointer;
   display: block;
-  width: 23px;
-  height: 23px;
-  margin-right: 2px;
-  margin-bottom: 2px;
-  border: 1px solid #CCCCCC;
+  border-radius: 50%;
+  width: 29px;
+  height: 29px;
+  margin-right: 7px;
+  margin-bottom: 7px;
+  float: left;
+}
+
+.color-option a.active {
+  border: 2px solid #CCC;
+  color: white;
+  text-align: center;
+  line-height: 25px;
+  font-size: 18px;
 }

@@ -73,6 +73,25 @@ var coverOptions = [
   }
 ]
 
+function ColorLuminance(hex, lum) {
+  // validate hex string
+  hex = String(hex).replace(/[^0-9a-f]/gi, '');
+  if (hex.length < 6) {
+    hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
+  }
+  lum = lum || 0;
+
+  // convert to decimal and change luminosity
+  var rgb = "#", c, i;
+  for (i = 0; i < 3; i++) {
+    c = parseInt(hex.substr(i*2,2), 16);
+    c = Math.round(Math.min(Math.max(0, c + (c * lum)), 255)).toString(16);
+    rgb += ("00"+c).substr(c.length);
+  }
+
+  return rgb;
+}
+
 function closeAllPopovers() {
   $('#trimming-color').popover('hide')
   $('#body-material').popover('hide')
@@ -226,8 +245,16 @@ $('#cover-color').on('click', function() {
 })
 
 $('#cover-color').on('shown.bs.popover', function() {
-  $('.color-option a').css('background-color', function() {
-    return $(this).data('color')
+  $('.color-option a').each(function(index, ele) {
+    if ($(this).data('alias') == selection.coverColor) {
+      $(this).addClass('active')
+      $(this).html('<i class="fa fa-check" aria-hidden="true"></i>')
+    }
+  })
+  $('.color-option a').css('background', function() {
+    var color = $(this).data('color')
+    var lighter = ColorLuminance(color, 0.2)
+    return '-webkit-linear-gradient(45deg, ' + color + ' 0%, ' + lighter + ' 100%)'
   })
   $('.color-option a').on('click', function() {
     selection.coverColor = $(this).data('alias')
