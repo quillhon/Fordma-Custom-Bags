@@ -1,3 +1,13 @@
+var constraints = {
+  email: {
+    presence: true,
+    email: true
+  },
+  name: {
+    presence: true
+  }
+}
+
 var selection = {
   trimmingColor: 'a',
   bodyMaterial: '600',
@@ -108,6 +118,28 @@ function updateText() {
   $('#cover-color-text').html(selection.coverColor)
 }
 
+function submitOrder() {
+  var $btn = $('#submit-order-button').button('loading')
+
+  $('#email-group').removeClass('has-error')
+  $('#name-group').removeClass('has-error')
+
+  var data = {
+    email: $('#email').val(),
+    name : $('#name').val()
+  }
+
+  var validateResult = validate(data, constraints)
+  if (validateResult) {
+    $.each(validateResult, function(name, error) {
+      $('#' + name + '-group').addClass('has-error')
+    })
+    $btn.button('reset')
+  } else {
+    $.extend(data, selection)
+  }
+}
+
 updateText()
 
 $.templates('MaterialOption', '<li class="material-option"><a data-alias="{{:alias}}">{{:material}}</a></li>')
@@ -135,6 +167,12 @@ $('#trimming-color').on('click', function() {
 })
 
 $('#trimming-color').on('shown.bs.popover', function() {
+  $('.color-option a').each(function(index, ele) {
+    if ($(this).data('alias') == selection.coverColor) {
+      $(this).addClass('active')
+      $(this).html('<i class="fa fa-check" aria-hidden="true"></i>')
+    }
+  })
   $('.color-option a').css('background-color', function() {
     return $(this).data('color')
   })
@@ -190,6 +228,12 @@ $('#body-color').on('click', function() {
 })
 
 $('#body-color').on('shown.bs.popover', function() {
+  $('.color-option a').each(function(index, ele) {
+    if ($(this).data('alias') == selection.coverColor) {
+      $(this).addClass('active')
+      $(this).html('<i class="fa fa-check" aria-hidden="true"></i>')
+    }
+  })
   $('.color-option a').css('background-color', function() {
     return $(this).data('color')
   })
@@ -262,3 +306,8 @@ $('#cover-color').on('shown.bs.popover', function() {
     $('#cover-color').popover('toggle')
   })
 })
+
+/* ============================
+ * Submittion
+ * ============================ */
+$('#submit-order-button').on('click', submitOrder);

@@ -22,16 +22,37 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <ul class="selection-menu">
-            <li><a id="trimming-color"><i class="fa fa-paint-brush" aria-hidden="true"></i> Trimming color: <span id="trimming-color-text"></span></a></li>
-            <li><a id="body-material"><i class="fa fa-map" aria-hidden="true"></i> Body material: <span id="body-material-text"></span></a></li>
-            <li><a id="body-color"><i class="fa fa-paint-brush" aria-hidden="true"></i> Body color: <span id="body-color-text"></span></a></li>
-            <li><a id="cover-material"><i class="fa fa-map" aria-hidden="true"></i> Cover material: <span id="cover-material-text"></span></a></li>
-            <li><a id="cover-color"><i class="fa fa-paint-brush" aria-hidden="true"></i> Cover color: <span id="cover-color-text"></span></a></li>
-        </ul>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-9 col-md-8 col-sm-8">
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-4">
+                    <h3>Commutor Bag</h3>
+                    <ul class="selection-menu">
+                        <li><a id="trimming-color"><i class="fa fa-paint-brush" aria-hidden="true"></i> Trimming color: <span class="selection-text" id="trimming-color-text"></span></a></li>
+                        <li><a id="body-material"><i class="fa fa-map" aria-hidden="true"></i> Body material: <span class="selection-text " id="body-material-text"></span></a></li>
+                        <li><a id="body-color"><i class="fa fa-paint-brush" aria-hidden="true"></i> Body color: <span class="selection-text " id="body-color-text"></span></a></li>
+                        <li><a id="cover-material"><i class="fa fa-map" aria-hidden="true"></i> Cover material: <span class="selection-text " id="cover-material-text"></span></a></li>
+                        <li><a id="cover-color"><i class="fa fa-paint-brush" aria-hidden="true"></i> Cover color: <span class="selection-text " id="cover-color-text"></span></a></li>
+                    </ul>
+                    <div class="form-group" id="email-group">
+                        <label for="email" class="control-label">Email</label>
+                        <input type="email" id="email" class="form-control"></input>
+                    </div>
+                    <div class="form-group" id="name-group">
+                        <label for="name" class="control-label">Name</label>
+                        <input type="text" id="name" class="form-control"></input>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary" id="submit-order-button" data-loading-text="Submitting..." autocomplete="off">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.10.0/validate.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsrender/0.9.77/jsrender.min.js"></script>
         <script src="js/plugins.js"></script>
