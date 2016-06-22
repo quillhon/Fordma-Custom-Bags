@@ -283,11 +283,17 @@ textarea {
 
 .selection-menu {
   margin-top: 40px;
+  margin-left: 340px;
   list-style: none;
 }
 
 .selection-menu li > a{
   cursor: pointer;
+}
+
+.material-select {
+  padding: 0;
+  list-style: none;
 }
 
 .color-select {
