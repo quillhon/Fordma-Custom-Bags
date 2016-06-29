@@ -124,9 +124,9 @@ function init() {
 }
 
 function updateBagOutlook() {
-  $('#face-trimming-image').attr('src', '/img/commuter/face/trimming_' + selection.trimming.alias + '.png')
-  $('#face-body-image').attr('src', '/img/commuter/face/body_' + selection.body.alias + '.png')
-  $('#face-cover-image').attr('src', '/img/commuter/face/cover_' + selection.cover.alias + '.png')
+  $('#face-trimming-image').attr('src', 'img/commuter/face/trimming_' + selection.trimming.alias + '.png')
+  $('#face-body-image').attr('src', 'img/commuter/face/body_' + selection.body.alias + '.png')
+  $('#face-cover-image').attr('src', 'img/commuter/face/cover_' + selection.cover.alias + '.png')
 }
 
 function prepareColorOptions(selectedColor, onChange) {
