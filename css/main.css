@@ -281,6 +281,21 @@ textarea {
     }
 }
 
+.bag-preview {
+    position: relative;
+}
+
+.bag-preview > img.base {
+    width: 100%;
+}
+
+.bag-preview > img.overlay {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
 .selection-menu {
   padding: 0;
   margin: 16px 0;

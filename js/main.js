@@ -9,23 +9,23 @@ var constraints = {
 }
 
 var selection = {
-  trimmingColor: 'a',
-  bodyMaterial: '600',
-  bodyColor: 'a',
-  coverMaterial: '600',
-  coverColor: 'a'
+  trimming: null,
+  body: null,
+  cover: null
 }
 
 var trimmingOptions = {
   colors: [
-    { alias: 'a', color: '#8e7a04' },
-    { alias: 'b', color: '#c9be5d' },
-    { alias: 'c', color: '#517fe4' },
-    { alias: 'd', color: '#801847' },
-    { alias: 'e', color: '#801847' },
-    { alias: 'f', color: '#fef652' },
-    { alias: 'g', color: '#5890cd' },
-    { alias: 'l', color: '#9062f9' }
+    { text: 'Black',  alias: 'black',  color: '#000000' },
+    { text: 'Blue',   alias: 'blue',   color: '#c9be5d' },
+    { text: 'Brown',  alias: 'brown',  color: '#517fe4' },
+    { text: 'Green',  alias: 'green',  color: '#801847' },
+    { text: 'Grey',   alias: 'grey',   color: '#801847' },
+    { text: 'Orange', alias: 'orange', color: '#fef652' },
+    { text: 'Pink',   alias: 'pink',   color: '#5890cd' },
+    { text: 'Red',    alias: 'red',    color: '#9062f9' },
+    { text: 'White',  alias: 'white',  color: '#9062f9' },
+    { text: 'Yellow', alias: 'yellow', color: '#9062f9' }
   ]
 }
 
@@ -34,24 +34,31 @@ var bodyOptions = [
     alias: '600', 
     material: '600', 
     colors: [
-      { alias: 'a', color: '#8e7a04' },
-      { alias: 'b', color: '#c9be5d' },
-      { alias: 'c', color: '#517fe4' },
-      { alias: 'd', color: '#801847' },
-      { alias: 'e', color: '#801847' },
-      { alias: 'f', color: '#fef652' },
-      { alias: 'g', color: '#5890cd' },
-      { alias: 'l', color: '#9062f9' }
+      { text: '600 Black',          alias: 'black',         color: '#8e7a04' },
+      { text: '600 Blue',           alias: 'blue',          color: '#c9be5d' },
+      { text: '600 Brown',          alias: 'brown',         color: '#517fe4' },
+      { text: '600 Dark Grey',      alias: 'dark_grey',     color: '#801847' },
+      { text: '600 Green',          alias: 'green',         color: '#801847' },
+      { text: '600 Kahai',          alias: 'kahai',         color: '#fef652' },
+      { text: '600 Military Green', alias: 'military_green', color: '#5890cd' },
+      { text: '600 Navy',           alias: 'navy',          color: '#9062f9' },
+      { text: '600 Orange',         alias: 'orange',        color: '#9062f9' },
+      { text: '600 Purple',         alias: 'purple',        color: '#9062f9' },
+      { text: '600 Red',            alias: 'red',           color: '#9062f9' },
+      { text: '600 Sky_blue',       alias: 'sky_blue',      color: '#9062f9' },
+      { text: '600 White',          alias: 'white',         color: '#9062f9' },
+      { text: '600 Yellow',         alias: 'yellow',        color: '#9062f9' }
     ],
   },
   { 
     alias: '1000', 
     material: '1000', 
     colors: [
-      { alias: '1', color: '#8e7a04' },
-      { alias: '2', color: '#c9be5d' },
-      { alias: '3', color: '#517fe4' },
-      { alias: '4', color: '#801847' }
+      { text: '1000 Purple',   alias: 'purple',   color: '#9062f9' },
+      { text: '1000 Red',      alias: 'red',      color: '#9062f9' },
+      { text: '1000 Sky Blue', alias: 'sky_blue', color: '#9062f9' },
+      { text: '1000 White',    alias: 'white',    color: '#9062f9' },
+      { text: '1000 Yellow',   alias: 'yellow',   color: '#9062f9' }
     ] 
   }
 ]
@@ -61,24 +68,31 @@ var coverOptions = [
     alias: '600', 
     material: '600', 
     colors: [
-      { alias: 'a', color: '#8e7a04' },
-      { alias: 'b', color: '#c9be5d' },
-      { alias: 'c', color: '#517fe4' },
-      { alias: 'd', color: '#801847' },
-      { alias: 'e', color: '#801847' },
-      { alias: 'f', color: '#fef652' },
-      { alias: 'g', color: '#5890cd' },
-      { alias: 'l', color: '#9062f9' }
+      { text: '600 Beige',         alias: 'beige',           color: '#c9be5d' },
+      { text: '600 Black',         alias: 'black',           color: '#8e7a04' },
+      { text: '600 Blue',          alias: 'blue',            color: '#517fe4' },
+      { text: '600 Brown',         alias: 'brown',           color: '#517fe4' },
+      { text: '600 Dark Grey',     alias: 'dark_grey',       color: '#801847' },
+      { text: '600 Green',         alias: 'green',           color: '#801847' },
+      { text: '600 Military Green', alias: 'military_green', color: '#5890cd' },
+      { text: '600 Navy',          alias: 'navy',            color: '#9062f9' },
+      { text: '600 Orange',        alias: 'orange',          color: '#9062f9' },
+      { text: '600 Pink',          alias: 'pink',            color: '#9062f9' },
+      { text: '600 Purple',        alias: 'purple',          color: '#9062f9' },
+      { text: '600 Red',           alias: 'red',             color: '#9062f9' },
+      { text: '600 Sky Blue',      alias: 'sky_blue',        color: '#9062f9' },
+      { text: '600 White',         alias: 'white',           color: '#9062f9' },
+      { text: '600 Yellow',        alias: 'yellow',          color: '#9062f9' }
     ],
   },
   { 
     alias: '1000', 
     material: '1000', 
     colors: [
-      { alias: '1', color: '#8e7a04' },
-      { alias: '2', color: '#c9be5d' },
-      { alias: '3', color: '#517fe4' },
-      { alias: '4', color: '#801847' }
+      { text: 'Green',         alias: 'green',         color: '#801847' },
+      { text: 'Military Grey', alias: 'military_grey', color: '#5890cd' },
+      { text: 'Navy',          alias: 'navy',          color: '#9062f9' },
+      { text: 'Orange',        alias: 'orange',        color: '#9062f9' }
     ] 
   }
 ]
@@ -102,24 +116,42 @@ function ColorLuminance(hex, lum) {
   return rgb;
 }
 
-function closeAllPopovers() {
-  $('#trimming-color').popover('hide')
-  $('#body-material').popover('hide')
-  $('#body-color').popover('hide')
-  $('#cover-material').popover('hide')
-  $('#cover-color').popover('hide')
+function init() {
+  selection.trimming = trimmingOptions.colors[Math.floor(Math.random() * trimmingOptions.colors.length)]
+  selection.body = bodyOptions[0].colors[Math.floor(Math.random() * bodyOptions[0].colors.length)]
+  selection.cover = coverOptions[0].colors[Math.floor(Math.random() * coverOptions[0].colors.length)]
+  updateBagOutlook()
 }
 
-function updateText() {
-  $('#trimming-color-text').html(selection.trimmingColor)
-  $('#body-material-text').html(selection.bodyMaterial)
-  $('#body-color-text').html(selection.bodyColor)
-  $('#cover-material-text').html(selection.coverMaterial)
-  $('#cover-color-text').html(selection.coverColor)
+function updateBagOutlook() {
+  $('#face-trimming-image').attr('src', '/img/commuter/face/trimming_' + selection.trimming.alias + '.png')
+  $('#face-body-image').attr('src', '/img/commuter/face/body_' + selection.body.alias + '.png')
+  $('#face-cover-image').attr('src', '/img/commuter/face/cover_' + selection.cover.alias + '.png')
 }
 
-function submitOrder() {
-  var $btn = $('#submit-order-button').button('loading')
+function prepareColorOptions(selectedColor, onChange) {
+  $('.color-option a').each(function(index, ele) {
+    if ($(this).data('alias') == selectedColor) {
+      $(this).addClass('active')
+      $(this).html('<i class="fa fa-check" aria-hidden="true"></i>')
+    }
+  })
+  $('.color-option a').css('background', function() {
+    var color = $(this).data('color')
+    var lighter = ColorLuminance(color, 0.2)
+    return '-webkit-linear-gradient(45deg, ' + color + ' 0%, ' + lighter + ' 100%)'
+  })
+  $('.color-option a').on('click', function() {
+    $('.color-option a.active').removeClass('active').html('')
+    $(this).addClass('active')
+    $(this).html('<i class="fa fa-check" aria-hidden="true"></i>')
+    
+    onChange($(this).data())
+  })
+}
+
+function validation() {
+  var $btn = $('#review-order-button').button('loading')
 
   $('#email-group').removeClass('has-error')
   $('#name-group').removeClass('has-error')
@@ -135,179 +167,85 @@ function submitOrder() {
       $('#' + name + '-group').addClass('has-error')
     })
     $btn.button('reset')
+    return false;
   } else {
     $.extend(data, selection)
+    return true;
   }
 }
 
-updateText()
-
-$.templates('MaterialOption', '<li class="material-option"><a data-alias="{{:alias}}">{{:material}}</a></li>')
-$.templates('MaterialSelect', '<ul class="material-select">{{for materials tmpl="MaterialOption" /}}</ul>')
-
-$.templates('ColorOption', '<li class="color-option"><a data-alias="{{:alias}}" data-color="{{:color}}"></a></li>')
-$.templates('ColorSelect', '<ul class="color-select">{{for colors tmpl="ColorOption" /}}</ul>')
-
-var popoverOptions = {
-  html: true,
-  trigger: 'manual',
-  placement: 'left'
+function submitOrder() {
+  console.log('submitOrder la')
 }
+
+$.templates('ColorOption', '<li class="color-option"><a data-text={{:text}} data-alias="{{:alias}}" data-color="{{:color}}"></a></li>')
+$.templates('ColorSelect', '<ul class="color-select">{{for colors tmpl="ColorOption" /}}</ul>')
+$.templates('MaterialSelect', '<h4>{{:material}}</h4><ul class="material-select">{{for colors tmpl="ColorOption" /}}</ul>')
 
 /* ============================
  * Trimming Color
  * ============================ */
-$('#trimming-color').popover($.extend({}, popoverOptions, {
-  content: $.templates.ColorSelect(trimmingOptions)
-}))
-
 $('#trimming-color').on('click', function() {
-  closeAllPopovers()
-  $(this).popover('toggle')
-})
-
-$('#trimming-color').on('shown.bs.popover', function() {
-  $('.color-option a').each(function(index, ele) {
-    if ($(this).data('alias') == selection.trimmingColor) {
-      $(this).addClass('active')
-      $(this).html('<i class="fa fa-check" aria-hidden="true"></i>')
-    }
-  })
-  $('.color-option a').css('background-color', function() {
-    return $(this).data('color')
-  })
-  $('.color-option a').on('click', function() {
-    selection.trimmingColor = $(this).data('alias')
-    updateText()
-    $('#trimming-color').popover('toggle')
-  })
-})
-
-/* ============================
- * Body Material
- * ============================ */
-$('#body-material').popover($.extend({}, popoverOptions, {
-  content: $.templates.MaterialSelect({ materials: bodyOptions })
-}))
-
-$('#body-material').on('click', function() {
-  closeAllPopovers()
-  $(this).popover('toggle')
-})
-
-$('#body-material').on('shown.bs.popover', function() {
-  $('.material-option a').on('click', function() {
-    if (selection.bodyMaterial != $(this).data('alias')) {
-      selection.bodyColor = ''
-    }
-    selection.bodyMaterial = $(this).data('alias')
-    updateText()
-    $('#body-material').popover('toggle')
+  $('.colors-panel .panel-body').html($.templates.ColorSelect(trimmingOptions))
+  prepareColorOptions(selection.trimming.alias, function(newChoice) {
+    selection.trimming = newChoice
+    updateBagOutlook()
   })
 })
 
 /* ============================
  * Body Color
  * ============================ */
-$('#body-color').popover($.extend({}, popoverOptions, {
-  content: function() {
-    var options = { }
-    $.each(bodyOptions, function(index, value) {
-      if (value.alias == selection.bodyMaterial) {
-        options.colors = value.colors
-        return false
-      }
-    })
-    return $.templates.ColorSelect(options)
-  }
-}))
-
 $('#body-color').on('click', function() {
-  closeAllPopovers()
-  $(this).popover('toggle')
-})
-
-$('#body-color').on('shown.bs.popover', function() {
-  $('.color-option a').each(function(index, ele) {
-    if ($(this).data('alias') == selection.bodyColor) {
-      $(this).addClass('active')
-      $(this).html('<i class="fa fa-check" aria-hidden="true"></i>')
-    }
-  })
-  $('.color-option a').css('background-color', function() {
-    return $(this).data('color')
-  })
-  $('.color-option a').on('click', function() {
-    selection.bodyColor = $(this).data('alias')
-    updateText()
-    $('#body-color').popover('toggle')
-  })
-})
-
-/* ============================
- * Cover Material
- * ============================ */
-$('#cover-material').popover($.extend({}, popoverOptions, {
-  content: $.templates.MaterialSelect({ materials: coverOptions })
-}))
-
-$('#cover-material').on('click', function() {
-  closeAllPopovers()
-  $(this).popover('toggle')
-})
-
-$('#cover-material').on('shown.bs.popover', function() {
-  $('.material-option a').on('click', function() {
-    if (selection.coverMaterial != $(this).data('alias')) {
-      selection.coverColor = ''
-    }
-    selection.coverMaterial = $(this).data('alias')
-    updateText()
-    $('#cover-material').popover('toggle')
+  $('.colors-panel .panel-body').html($.templates.MaterialSelect(bodyOptions))
+  prepareColorOptions(selection.body.alias, function(newChoice) {
+    selection.body = newChoice
+    updateBagOutlook()
   })
 })
 
 /* ============================
  * Cover Color
  * ============================ */
-$('#cover-color').popover($.extend({}, popoverOptions, {
-  content: function() {
-    var options = { }
-    $.each(coverOptions, function(index, value) {
-      if (value.alias == selection.coverMaterial) {
-        options.colors = value.colors
-        return false
-      }
-    })
-    return $.templates.ColorSelect(options)
-  }
-}))
-
 $('#cover-color').on('click', function() {
-  closeAllPopovers()
-  $(this).popover('toggle')
-})
-
-$('#cover-color').on('shown.bs.popover', function() {
-  $('.color-option a').each(function(index, ele) {
-    if ($(this).data('alias') == selection.coverColor) {
-      $(this).addClass('active')
-      $(this).html('<i class="fa fa-check" aria-hidden="true"></i>')
-    }
-  })
-  $('.color-option a').css('background', function() {
-    var color = $(this).data('color')
-    var lighter = ColorLuminance(color, 0.2)
-    return '-webkit-linear-gradient(45deg, ' + color + ' 0%, ' + lighter + ' 100%)'
-  })
-  $('.color-option a').on('click', function() {
-    selection.coverColor = $(this).data('alias')
-    updateText()
-    $('#cover-color').popover('toggle')
+  $('.colors-panel .panel-body').html($.templates.MaterialSelect(coverOptions))
+  prepareColorOptions(selection.cover.alias, function(newChoice) {
+    selection.cover = newChoice
+    updateBagOutlook()
   })
 })
 
 /* ============================
  * Submittion
  * ============================ */
+$('#review-order-button').on('click', function(event){
+  if (validation()) {
+    $('#order-review-modal').modal('show')
+  }
+})
+
+$('#order-review-modal').on('show.bs.modal', function(event) {
+  var modal = $(this)
+  
+  var data = {
+    email: $('#email').val(),
+    name : $('#name').val(),
+    trimming: selection.trimming.text,
+    body: selection.body.text,
+    cover: selection.cover.text
+  }
+  
+  Object.keys(data).map(function(field) {
+    modal.find('.modal-body .title-' + field).html(field)
+    modal.find('.modal-body .data-' + field).html(data[field])
+  })
+})
+
 $('#submit-order-button').on('click', submitOrder);
+
+/* ============================
+ * Init page
+ * ============================ */
+init()
+$('.preview-main').slick();
+$('#trimming-color').click()
