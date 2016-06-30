@@ -97,6 +97,8 @@ var coverOptions = [
   }
 ]
 
+var database = firebase.database()
+
 function ColorLuminance(hex, lum) {
   // validate hex string
   hex = String(hex).replace(/[^0-9a-f]/gi, '');
@@ -127,6 +129,11 @@ function updateBagOutlook() {
   $('#face-trimming-image').attr('src', 'img/commuter/face/trimming_' + selection.trimming.alias + '.png')
   $('#face-body-image').attr('src', 'img/commuter/face/body_' + selection.body.alias + '.png')
   $('#face-cover-image').attr('src', 'img/commuter/face/cover_' + selection.cover.alias + '.png')
+}
+
+function updateMessageBox(data) {
+  var messageBox = $('.panel-collapse.collapse.in .panel-body')
+  messageBox.html($.templates.MessageBox(data))
 }
 
 function prepareColorOptions(selectedColor, onChange) {
@@ -175,21 +182,43 @@ function validation() {
 }
 
 function submitOrder() {
-  console.log('submitOrder la')
+  database.ref('commuter_order').push({
+    email: $('#email').val(),
+    name : $('#name').val(),
+    trimming: selection.trimming.text,
+    body: selection.body.text,
+    cover: selection.cover.text,
+    submit_time: firebase.database.ServerValue.TIMESTAMP
+  })
 }
 
-$.templates('ColorOption', '<li class="color-option"><a data-text={{:text}} data-alias="{{:alias}}" data-color="{{:color}}"></a></li>')
+$.templates('ColorOption', '<li class="color-option"><a data-text="{{:text}}" data-alias="{{:alias}}" data-color="{{:color}}"></a></li>')
 $.templates('ColorSelect', '<ul class="color-select">{{for colors tmpl="ColorOption" /}}</ul>')
 $.templates('MaterialSelect', '<h4>{{:material}}</h4><ul class="material-select">{{for colors tmpl="ColorOption" /}}</ul>')
+$.templates('MessageBox', '<p>{{:title}}</p><h4>{{:name}}</h4><div class="color-sample" data-color="{{:color}}"></div>')
 
 /* ============================
  * Trimming Color
  * ============================ */
 $('#trimming-color').on('click', function() {
   $('.colors-panel .panel-body').html($.templates.ColorSelect(trimmingOptions))
+  $('.colors-panel .panel-heading').html('Trimming Color Options')
   prepareColorOptions(selection.trimming.alias, function(newChoice) {
     selection.trimming = newChoice
     updateBagOutlook()
+    updateMessageBox({
+      title: 'Trimming color details:',
+      name: selection.trimming.text,
+      color: selection.trimming.color
+    })
+  })
+})
+
+$('#trimming-color-details').on('shown.bs.collapse', function() {
+  updateMessageBox({
+    title: 'Trimming color details:',
+    name: selection.trimming.text,
+    color: selection.trimming.color
   })
 })
 
@@ -198,9 +227,24 @@ $('#trimming-color').on('click', function() {
  * ============================ */
 $('#body-color').on('click', function() {
   $('.colors-panel .panel-body').html($.templates.MaterialSelect(bodyOptions))
+  $('.colors-panel .panel-heading').html('Body Options')
   prepareColorOptions(selection.body.alias, function(newChoice) {
     selection.body = newChoice
     updateBagOutlook()
+    console.log(selection.body)
+    updateMessageBox({
+      title: 'Body color details:',
+      name: selection.body.text,
+      color: selection.body.color
+    })
+  })
+})
+
+$('#body-color-details').on('shown.bs.collapse', function() {
+  updateMessageBox({
+    title: 'Body color details:',
+    name: selection.body.text,
+    color: selection.body.color
   })
 })
 
@@ -209,9 +253,23 @@ $('#body-color').on('click', function() {
  * ============================ */
 $('#cover-color').on('click', function() {
   $('.colors-panel .panel-body').html($.templates.MaterialSelect(coverOptions))
+  $('.colors-panel .panel-heading').html('Cover Options')
   prepareColorOptions(selection.cover.alias, function(newChoice) {
     selection.cover = newChoice
     updateBagOutlook()
+    updateMessageBox({
+      title: 'Cover color details:',
+      name: selection.cover.text,
+      color: selection.cover.color
+    })
+  })
+})
+
+$('#cover-color-details').on('shown.bs.collapse', function() {
+  updateMessageBox({
+    title: 'Cover color details:',
+    name: selection.cover.text,
+    color: selection.cover.color
   })
 })
 
@@ -247,5 +305,4 @@ $('#submit-order-button').on('click', submitOrder);
  * Init page
  * ============================ */
 init()
-$('.preview-main').slick();
 $('#trimming-color').click()

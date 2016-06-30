@@ -285,6 +285,10 @@ textarea {
     position: relative;
 }
 
+.bag-preview > img {
+    padding: 40px;
+}
+
 .bag-preview > img.base {
     width: 100%;
 }
@@ -294,6 +298,32 @@ textarea {
     width: 100%;
     top: 0;
     left: 0;
+}
+
+.preview-main .carousel-control {
+    background-image: none;
+    color: #cccccc;
+}
+
+.preview-main .carousel-indicators li {
+    border: 1px solid #cccccc;
+}
+
+.preview-main .carousel-indicators li.active {
+    background-color: #cccccc;
+}
+
+.customize {
+    height: 450px;
+    margin-bottom: 15px;
+}
+
+.customize > div {
+    height: 100%;
+}
+
+.colors-panel {
+    height: 100%;
 }
 
 .selection-menu {
